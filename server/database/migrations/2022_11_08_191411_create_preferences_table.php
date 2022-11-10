@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('preferences', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('user_id')->constrained('users');
+            $table->double('payment_amount', 11, 2);
+            $table->double('refund_amount', 11, 2)->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('preferences');
     }
 };

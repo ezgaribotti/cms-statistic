@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('status_id')->constrained('status');
+            $table->string('order_number')->unique();
+            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('preference_id')->constrained('preferences');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('orders');
     }
 };
