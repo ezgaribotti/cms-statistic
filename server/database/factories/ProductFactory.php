@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Helper;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class ProductFactory extends Factory
             'unit_price' => fake()->randomFloat(2, 800, 8000),
             'active' => fake()->randomElement([0, 1]),
             'description' => fake()->text(),
-            'image' => fake()->numberBetween(100, 1000) . time() . chr(46) . chr(106) . chr(112) . chr(103),
+            'image' => Helper::randomImageName(),
             'category_id' => fake()->numberBetween(1, 6),
             'total_sales' => fake()->numberBetween(10, 100),
         ];

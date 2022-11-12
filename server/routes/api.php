@@ -4,9 +4,12 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\GenderController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PreferenceController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\ProvinceController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\StatusController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -74,4 +77,17 @@ Route::group(['middleware' => ['auth:sanctum']], function ()
         Route::post('/products/{id}', 'update');
         Route::delete('/products/{id}', 'destroy');
     });
+
+    Route::get('/status', [StatusController::class, 'index']);
+
+    Route::controller(OrderController::class)->group(function ()
+    {
+        Route::get('/orders', 'index');
+        Route::post('/orders', 'store');
+        Route::get('/orders/{id}', 'show');
+        Route::put('/orders/{id}', 'update');
+        Route::delete('/orders/{id}', 'destroy');
+    });
+
+    Route::post("/create-preference", [PreferenceController::class, 'store']);
 });
