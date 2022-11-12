@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('province_id')->constrained('provinces');
             $table->string('city');
             $table->string('street_address');
-            $table->string('live_mode')->default(1);
+            $table->smallInteger('live_mode')->default(1);
             $table->bigInteger('total_purchases')->default(0);
             $table->timestamps();
         });

@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+
 /**
  * Global helpers.
  */
@@ -22,5 +25,25 @@ class Helper
         }
 
         return ['data' => $data];
+    }
+
+    /**
+     * Save image to storage.
+     * 
+     */
+    public static function saveImage($image)
+    {
+        $imageName = Str::uuid()->toString() . chr(46) . $image->getClientOriginalExtension();
+        $imageName = Str::replace(chr(45), chr(100), $imageName);
+
+        $imageFile = Image::make($image);
+        $imageFile->resize(500, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        $storagePath = "images" . chr(47) . $imageName;
+        $imageFile->save($storagePath, 80);
+
+        return $imageName;
     }
 }
