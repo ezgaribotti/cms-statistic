@@ -75,6 +75,6 @@ class Helper
      */
     public static function createOrderNumber($preferenceId)
     {
-        return fake()->randomLetter() . time() . chr(80) . $preferenceId;
+        return fake()->randomLetter() . time() . chr(112) . $preferenceId;
     }
 }

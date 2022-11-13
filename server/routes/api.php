@@ -3,12 +3,15 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\FeedbackController;
 use App\Http\Controllers\Api\GenderController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PreferenceController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\ProvinceController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\SortingController;
+use App\Http\Controllers\Api\StatisticController;
 use App\Http\Controllers\Api\StatusController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -27,6 +30,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/sortings', [SortingController::class, 'index']);
+
+Route::post('/feedbacks', [FeedbackController::class, 'store']);
+
 Route::group(['middleware' => ['auth:sanctum']], function ()
 {
     Route::controller(AuthController::class)->group(function ()
@@ -36,7 +43,7 @@ Route::group(['middleware' => ['auth:sanctum']], function ()
         Route::get('/logout', 'logout');
     });
 
-    Route::get("/roles", [RoleController::class, 'index']);
+    Route::get('/roles', [RoleController::class, 'index']);
 
     Route::controller(UserController::class)->group(function ()
     {
@@ -89,5 +96,14 @@ Route::group(['middleware' => ['auth:sanctum']], function ()
         Route::delete('/orders/{id}', 'destroy');
     });
 
-    Route::post("/create-preference", [PreferenceController::class, 'store']);
+    Route::post('/create-preference', [PreferenceController::class, 'store']);
+
+    Route::controller(FeedbackController::class)->group(function ()
+    {
+        Route::get('/feedbacks', 'index');
+        Route::get('/feedbacks/{id}', 'show');
+        Route::delete('/feedbacks/{id}', 'destroy');
+    });
+
+    Route::get('/statistics', [StatisticController::class, 'index']);
 });
