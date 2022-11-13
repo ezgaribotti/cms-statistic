@@ -19,6 +19,11 @@ class Data {
 
 class PreferenceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:create'])->only(['store']);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

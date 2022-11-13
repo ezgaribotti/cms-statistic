@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:show'])->only(['index', 'show']);
+        $this->middleware(['permission:create'])->only(['store']);
+        $this->middleware(['permission:edit'])->only(['update']);
+        $this->middleware(['permission:destroy'])->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

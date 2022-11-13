@@ -8,6 +8,11 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:admin'])->only(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *

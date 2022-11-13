@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:show'])->only(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *

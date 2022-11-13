@@ -15,6 +15,11 @@ use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:show'])->only(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
