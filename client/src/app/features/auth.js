@@ -5,7 +5,10 @@ const initialState = {
     access_token: null,
     auth: false,
     user_profile: {
-        full_name: null
+        full_name: null,
+        role: {
+            id: null
+        }
     }
 };
 

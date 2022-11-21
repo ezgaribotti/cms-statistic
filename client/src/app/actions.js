@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import routes from "../routes";
 
@@ -23,3 +23,5 @@ export const logout = createAsyncThunk("logout", async () => {
     let response = await axios.get(routes.logout);
     return response.data;
 });
+
+export const toggleSidebar = createAction("toggle_sidebar");

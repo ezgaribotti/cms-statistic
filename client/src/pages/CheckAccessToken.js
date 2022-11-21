@@ -17,7 +17,7 @@ function CheckAccessToken() {
     }, []);
 
     return (
-        <></>
+        <div></div>
     );
 }
 

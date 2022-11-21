@@ -1,4 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+$font-family-base: "Poppins", sans-serif;
+
+$border-radius: 0rem;
+
+$light: #f5f5f5;
+$primary: #0f1626;
+$secondary: #ff533d;
+
+$text-muted: #6c757d;
+
+$nav-link-color: $text-muted;
+$nav-link-hover-color: white;
+
+$offcanvas-horizontal-width: 240px;
+$offcanvas-bg-color: $primary;
+$offcanvas-transition-duration: .4s;
+$offcanvas-padding-y: .7rem;
+$offcanvas-color: white;
+
+$dropdown-item-padding-y: 1rem;
 
 @import "~bootstrap/scss/bootstrap.scss";
 
 @import "~react-toastify/dist/ReactToastify.min.css";
+
+main {
+    transition: $offcanvas-transition-duration ease-in-out;
+}
+
+button, a {
+    text-decoration: none !important;
+}
+
+section {
+    height: 100vh;
+    width: auto;
+    background-color: $light;
+}
