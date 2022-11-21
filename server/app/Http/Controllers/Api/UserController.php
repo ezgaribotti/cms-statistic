@@ -126,6 +126,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if ($id == 1) {
+            return response()->json([
+                'message' => 'Cannot remove root user.'
+            ], 500);
+        }
+
         User::destroy($id);
 
         return response()->json([

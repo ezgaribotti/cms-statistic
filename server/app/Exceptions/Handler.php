@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -53,6 +54,12 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'message' => 'You do not have the required authorization.',
             ], 403);
+        });
+
+        $this->renderable(function (QueryException $e) {
+            return response()->json([
+                'message' => 'Cannot proceed with query, it is referenced by other records in the database.',
+            ], 500);
         });
 
         $this->renderable(function (NotFoundHttpException $e, $request) {
