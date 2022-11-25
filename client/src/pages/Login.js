@@ -45,28 +45,28 @@ function Login() {
                         <Space size={10} top className="text-center">
                             <Image src={images.logoAlt} width={180} />
                         </Space>
-                        <Card>
-                            <Card.Body>
-                                <Form noValidate onSubmit={handleSubmit}>
-                                    <Space size={20}>
-                                        <Form.Label>Usuario</Form.Label>
-                                        <Form.Control name="username" onChange={handleChange} required />
-                                    </Space>
-                                    <Space size={20}>
-                                        <Form.Label>Contraseña</Form.Label>
-                                        <Form.Control name="password" type="password" onChange={handleChange} required />
-                                    </Space>
-                                    <div className="text-end">
-                                        <Button type="submit">{lang.login.submit_button}</Button>
-                                    </div>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                        <Space bottom={false} top>
-                            <Link to={routes.home}>
-                                <IconGap icon={faArrowAltCircleLeft} justifyContent="center">{lang.login.go_back}</IconGap>
-                            </Link>
+                        <Space>
+                            <Card>
+                                <Card.Body>
+                                    <Form noValidate onSubmit={handleSubmit}>
+                                        <Space size={20}>
+                                            <Form.Label>{lang.login.inputs.username}</Form.Label>
+                                            <Form.Control name="username" onChange={handleChange} required />
+                                        </Space>
+                                        <Space size={20}>
+                                            <Form.Label>{lang.login.inputs.password}</Form.Label>
+                                            <Form.Control name="password" type="password" onChange={handleChange} required />
+                                        </Space>
+                                        <div className="text-end">
+                                            <Button type="submit">{lang.login.submit_button}</Button>
+                                        </div>
+                                    </Form>
+                                </Card.Body>
+                            </Card>
                         </Space>
+                        <Link to={routes.home}>
+                            <IconGap icon={faArrowAltCircleLeft} size="xl" justifyContent="center">{lang.login.go_back}</IconGap>
+                        </Link>
                     </Col>
                 </Row>
             </Container>

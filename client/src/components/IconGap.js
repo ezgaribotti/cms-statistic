@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function IconGap({ icon, size, children, justifyContent = "start", className }) {
+function IconGap({ icon, size = "lg", children, justifyContent = "start", className }) {
 
     const style = {
         display: "flex",

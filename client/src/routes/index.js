@@ -8,6 +8,8 @@ const routes = {
     user_profile: "/user-profile",
     users: "/users",
     roles: "/roles",
+    update_password: "/update-password",
+    statistics: "/statistics",
 };
 
 routes.path = {

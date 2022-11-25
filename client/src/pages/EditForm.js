@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { Fragment, useEffect, useReducer, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import BuildForm from "../components/BuildForm";
@@ -7,9 +7,8 @@ import axios from "axios";
 import Space from "../components/Space";
 import lang from "../lang";
 import { chr } from "../helpers";
-import { Col, Row } from "react-bootstrap";
 import IconGap from "../components/IconGap";
-import { faCalendarPlus, faCalendarCheck } from "@fortawesome/free-regular-svg-icons";
+import { faCalendarCheck } from "@fortawesome/free-regular-svg-icons";
 
 function EditForm({ config }) {
 
@@ -64,22 +63,13 @@ function EditForm({ config }) {
     }, []);
 
     return (
-        <div>
-            <Space>
-                <Row className="align-items-center">
-                    <Col xs={6}>
-                        <Title>{config.title + chr(32, 47, 32) + id}</Title>
-                    </Col>
-                    <Col>
-                        <IconGap justifyContent="end" icon={faCalendarPlus}>{defaultInputs.created_at}</IconGap>
-                    </Col>
-                </Row>
+        <Fragment>
+            <Title.IconGap createdAt={defaultInputs.created_at}>{config.title + chr(32, 47, 32) + id}</Title.IconGap>
+            <Space size={15}>
+                <BuildForm inputs={inputs} submitButton={lang.edit_form.submit_button} modeEdit onSubmit={handleSubmit} onChange={handleChange} />
             </Space>
-            <BuildForm inputs={inputs} submitButton={lang.edit_form.submit_button} modeEdit onSubmit={handleSubmit} onChange={handleChange} />
-            <Space top size={15} bottom={false}>
-                <IconGap justifyContent="end" icon={faCalendarCheck}>{lang.edit_form.default_inputs.updated_at + chr(58, 32) + defaultInputs.updated_at}</IconGap>
-            </Space>
-        </div>
+            <IconGap justifyContent="end" icon={faCalendarCheck}>{lang.edit_form.default_inputs.updated_at + chr(58, 32) + defaultInputs.updated_at}</IconGap>
+        </Fragment>
     );
 }
 

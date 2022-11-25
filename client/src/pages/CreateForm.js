@@ -1,10 +1,9 @@
-import { useEffect, useReducer, useState } from "react";
+import { Fragment, useEffect, useReducer, useState } from "react";
 import BuildForm from "../components/BuildForm";
 import Title from "../components/Title";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Space from "../components/Space";
 import lang from "../lang";
 
 function CreateForm({ config }) {
@@ -53,12 +52,10 @@ function CreateForm({ config }) {
     }, []);
 
     return (
-        <div>
-            <Space>
-                <Title>{config.title}</Title>
-            </Space>
+        <Fragment>
+            <Title>{config.title}</Title>
             <BuildForm inputs={inputs} submitButton={lang.create_form.submit_button} onSubmit={handleSubmit} onChange={handleChange} />
-        </div>
+        </Fragment>
     );
 }
 

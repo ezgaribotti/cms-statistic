@@ -19,7 +19,7 @@ function Sidebar() {
             <Offcanvas.Header>
                 <Image src={images.logo} width={60} />
                 <Button onClick={() => dispatch(toggleSidebar())}>
-                    <FontAwesomeIcon icon={faXmark} size="lg" />
+                    <FontAwesomeIcon icon={faXmark} size="xl" />
                 </Button>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -29,7 +29,7 @@ function Sidebar() {
                         return (
                             <Nav.Item key={index}>
                                 <Link to={x.route} className="nav-link">
-                                    <IconGap icon={x.icon}>{x.title}</IconGap>
+                                    <IconGap icon={x.icon} size={null}>{x.title}</IconGap>
                                 </Link>
                             </Nav.Item>
                         )

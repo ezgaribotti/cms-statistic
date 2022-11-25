@@ -8,6 +8,7 @@ import lang from "../lang";
 import { toast } from "react-toastify";
 import { chr } from "../helpers";
 import IconGap from "../components/IconGap";
+import { Fragment } from "react";
 
 function ConfirmDelete({ config }) {
 
@@ -26,23 +27,20 @@ function ConfirmDelete({ config }) {
     };
 
     return (
-        <div>
-            <Space>
-                <Title>{config.title + chr(32, 47, 32) + id}</Title>
-            </Space>
+        <Fragment>
+            <Title>{config.title + chr(32, 47, 32) + id}</Title>
             <Card bg="danger" className="text-white">
                 <Card.Body>
-                    <Card.Title>{lang.confirm_delete.alert.title}</Card.Title>
-                    <Card.Text>{lang.confirm_delete.alert.warning_text}</Card.Text>
-
-                    <Space top bottom={false}>
-                        <Button variant="danger" onClick={handleDelete}>
-                            <IconGap icon={faTrash}>{lang.confirm_delete.confirm_button}</IconGap>
-                        </Button>
+                    <Space>
+                        <Card.Title>{lang.confirm_delete.alert.title}</Card.Title>
+                        <Card.Text>{lang.confirm_delete.alert.warning_text}</Card.Text>
                     </Space>
+                    <Button variant="danger" onClick={handleDelete}>
+                        <IconGap icon={faTrash} size={null}>{lang.confirm_delete.confirm_button}</IconGap>
+                    </Button>
                 </Card.Body>
             </Card>
-        </div>
+        </Fragment>
     );
 }
 

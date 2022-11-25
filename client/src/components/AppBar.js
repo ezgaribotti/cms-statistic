@@ -12,19 +12,19 @@ function AppBar() {
     const { full_name } = useSelector(state => state.auth.payload.user_profile);
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg">
             <Container>
                 <Button variant="link" onClick={() => dispatch(toggleSidebar())}>
-                    <FontAwesomeIcon icon={faBars} size="lg" />
+                    <FontAwesomeIcon icon={faBars} size="xl" />
                 </Button>
                 <Dropdown>
 
                     <Dropdown.Toggle variant="link" className="hstack">
-                        <IconGap icon={faCircleUser} size="lg">{full_name}</IconGap>
+                        <IconGap icon={faCircleUser} size="xl">{full_name}</IconGap>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item as="button" onClick={() => dispatch(logout())}>
-                            <IconGap icon={faRightFromBracket}>{lang.components.app_bar.logout_button}</IconGap>
+                            <IconGap icon={faRightFromBracket} size={null}>{lang.components.app_bar.logout_button}</IconGap>
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>

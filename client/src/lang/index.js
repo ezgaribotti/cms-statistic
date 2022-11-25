@@ -21,6 +21,11 @@ const lang = {
             clear_search: "Borrar búsqueda",
         }
     },
+    layouts: {
+        control_panel: {
+            copyright: "All rights reserved. Statistic"
+        }
+    },
     edit_form: {
         success: "Registro editado con éxito",
         default_inputs: {
@@ -35,14 +40,53 @@ const lang = {
     login: {
         submit_button: "Iniciar sesión",
         go_back: "Volver al inicio",
+        inputs: {
+            username: "Usuario",
+            password: "Contraseña"
+        }
     },
     confirm_delete: {
         success: "Registro eliminado con éxito",
         confirm_button: "Aceptar",
         alert: {
-            title: "Advertencia",
+            title: "Eliminar registro",
             warning_text: "Si acepta eliminar el registro no se podrá recuperar de nuevo. ¿Estás seguro de eliminar el registro?"
         }
+    },
+    user_profile: {
+        data: {
+            id: "Id",
+            full_name: "Nombre completo",
+            username: "Usuario",
+            role: "Rol",
+            updated_at: "Última actualización"
+        },
+        update_password: {
+            inputs: {
+                password: "Contraseña",
+                password_confirmation: "Confirmar contraseña",
+            },
+            success: "Contraseña actualizada con éxito",
+            title: "Actualizar contraseña",
+            alert: {
+                title: "Información importante",
+                warning_text: "Al actualizar la contraseña y olvidarse la misma, comuníquese con el administrador o el soporte técnico para restaurarla"
+            },
+            submit_button: "Actualizar",
+        },
+    },
+    dashboard: {
+        full_count: {
+            customers: "Clientes",
+            orders: "Pedidos",
+            canceled_orders: "Pedidos cancelados",
+            feedbacks: "Comentarios",
+        },
+        overall_status: {
+            genders: "Géneros",
+            feedback_rating: "Clasificación de comentarios",
+            active_customers: "Clientes activos"
+        },
     }
 };
 

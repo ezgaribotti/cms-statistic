@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Button, Col, Form, Nav, Row, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight, faPenToSquare, faTrashAlt, faXmarkCircle, faFilePen } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ import lang from "../lang";
 
 function DataTable({ data = [], route, icon, columns = [], customEvent }) {
     return (
-        <Table responsive bordered hover>
+        <Table responsive bordered hover className="bg-white">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -76,22 +76,22 @@ function Search({ route, data, icon, columns, customEvent }) {
     };
 
     return (
-        <div>
+        <Fragment>
             <Space>
                 <Row>
                     <Col xs={4} lg={6}>
                         <Link className="btn btn-primary" to={route + chr(47) + "create"}>
-                            <IconGap icon={faFilePen}>{lang.components.data_table.create_button}</IconGap>
+                            <IconGap icon={faFilePen} size={null}>{lang.components.data_table.create_button}</IconGap>
                         </Link>
                     </Col>
                     <Col>
                         <Form.Control placeholder={lang.components.data_table.search_here} onKeyDown={handleChange} />
-                        {show ? <Button variant="link" onClick={() => setShow(false)}><IconGap icon={faXmarkCircle} size="lg">{lang.components.data_table.clear_search}</IconGap></Button> : null}
+                        {show ? <Button variant="link" onClick={() => setShow(false)}><IconGap icon={faXmarkCircle}>{lang.components.data_table.clear_search}</IconGap></Button> : null}
                     </Col>
                 </Row>
             </Space>
             <DataTable data={show ? search : data} icon={icon} route={route} columns={columns} customEvent={customEvent} />
-        </div>
+        </Fragment>
     );
 }
 
@@ -102,12 +102,12 @@ function DataCollector({ config, icon, customEvent }) {
     const { data } = useSWR(config.route + chr(63) + "page" + chr(61) + pageNumber);
 
     return (
-        <div>
+        <Fragment>
             <Search data={data.data} route={config.route} icon={icon} columns={config.columns} customEvent={customEvent} />
             <Nav className="justify-content-end align-items-center">
                 <Nav.Item>
                     <Space bottom={false} end>
-                        <IconGap icon={faFile} size="lg">{lang.components.data_table.page + chr(58, 32) + pageNumber}</IconGap>
+                        <IconGap icon={faFile}>{lang.components.data_table.page + chr(58, 32) + pageNumber}</IconGap>
                     </Space>
                 </Nav.Item>
                 <Nav.Item>
@@ -121,7 +121,7 @@ function DataCollector({ config, icon, customEvent }) {
                     </Button>
                 </Nav.Item>
             </Nav>
-        </div>
+        </Fragment>
     );
 }
 

@@ -13,6 +13,14 @@ use App\Models\Sorting;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
 
+class Data {
+    function __construct($property)
+    {
+        foreach ($property as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+}
 class StatisticController extends Controller
 {
     public function __construct()
@@ -43,22 +51,33 @@ class StatisticController extends Controller
         $totalGenders = [];
 
         foreach ($genders as $gender) {
-            $totalGenders[$gender->guard_name] = Customer::where('gender_id', $gender->id)->count();
+            $totalGenders[$gender->guard_name] = [
+                'name' => $gender->name,
+                'total_number' => Customer::where('gender_id', $gender->id)->count()
+            ];
         }
 
-        $status = ['inactive', 'active'];
+        $status = ['inactive' => ['live_mode' => 0, 'name' => 'Inactivo'], 'active' => ['live_mode' => 1, 'name' => 'Activo']];
 
         $totalActiveCustomers = [];
 
-        foreach ($status as $key => $value) {
-            $totalActiveCustomers[$value] = Customer::where('live_mode', $key)->count();
+        foreach ($status as $key => $property) {
+            $data = new Data($property);
+
+            $totalActiveCustomers[$key] = [
+                'name' => $data->name,
+                'total_number' => Customer::where('live_mode', $data->live_mode)->count()
+            ];
         }
 
         $sortings = Sorting::all();
         $totalFeedbackRating = [];
 
         foreach ($sortings as $sorting) {
-            $totalFeedbackRating[$sorting->guard_name] = Feedback::where('sorting_id', $sorting->id)->count();
+            $totalFeedbackRating[$sorting->guard_name] = [
+                'name' => $sorting->name,
+                'total_number' => Feedback::where('sorting_id', $sorting->id)->count()
+            ];
         }
 
         $totalProfitAmount = Preference::sum('payment_amount');
