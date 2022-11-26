@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Button, Card, Col, FormControl, FormLabel, Row, Table } from "react-bootstrap";
+import { Badge, Button, Card, Col, FormControl, FormLabel, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Title from "../components/Title";
 import CustomerDetails from "../components/CustomerDetails";
@@ -51,13 +51,14 @@ function Cart({ payer, items = [], totalAmount }) {
                     <CustomerDetails data={payer} />
                 </Col>
                 <Col>
+                    <Badge>{lang.pages.order_details.badge.title}</Badge>
                     <Table responsive bordered hover className="bg-white">
                         <thead>
                             <tr>
-                                <th>{lang.pages.cart.items.name}</th>
-                                <th>{lang.pages.cart.items.unit_price}</th>
-                                <th>{lang.pages.cart.items.quantity}</th>
-                                <th>{lang.pages.cart.items.partial_amount}</th>
+                                <th>{lang.pages.cart.data.name}</th>
+                                <th>{lang.pages.cart.data.unit_price}</th>
+                                <th>{lang.pages.cart.data.quantity}</th>
+                                <th>{lang.pages.cart.data.partial_amount}</th>
                                 <th></th>
                             </tr>
                         </thead>

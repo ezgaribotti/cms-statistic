@@ -1,7 +1,8 @@
 const themes = {
-    primary: "#6f737d",
-    secondary: "#a7acb1",
-    tertiary: "#ff988b"
+    primary: "#0f1626",
+    secondary: "#9fa2a8",
+    tertiary: "#ff533d",
+    fourth: "#ffc107"
 };
 
 export default themes;

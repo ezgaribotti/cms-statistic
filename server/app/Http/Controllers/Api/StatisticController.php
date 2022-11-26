@@ -35,14 +35,14 @@ class StatisticController extends Controller
      */
     public function index()
     {
-        $statistics = Statistic::orderBy('id', 'desc')->limit(12)->get();
+        $statistics = Statistic::where('year', date(chr(89)))->limit(12)->get();
 
         $totalCustomers = Customer::count();
         $totalOrders = Order::count();
         $totalCanceledOrders = Order::where('status_id', 2)->count();
         $totalFeedbacks = Feedback::count();
 
-        $limitNumber = 8;
+        $limitNumber = 5;
 
         $mostSelledProducts = Product::orderBy('total_sales', 'desc')->limit($limitNumber)->get();
         $customerLeaderboard = Customer::orderBy('total_purchases', 'desc')->limit($limitNumber)->get();
@@ -83,7 +83,7 @@ class StatisticController extends Controller
         $totalProfitAmount = Preference::sum('payment_amount');
         $totalRefundAmount = Preference::sum('refund_amount');
 
-        $totalIncomeAmount = $totalProfitAmount - $totalRefundAmount;
+        $wallet = ['profit_amount' => ['name' => 'Ingreso total', 'total_number' => round($totalProfitAmount, 2)], 'refund_amount' => ['name' => 'Devolución total', 'total_number' => round($totalRefundAmount, 2)]];
 
         return response()->json([
             'data' => [
@@ -97,11 +97,7 @@ class StatisticController extends Controller
                 'genders' => $totalGenders,
                 'active_customers' => $totalActiveCustomers,
                 'feedback_rating' => $totalFeedbackRating,
-                'wallet' => [
-                    'profit_amount' => round($totalProfitAmount, 2),
-                    'refund_amount' => round($totalRefundAmount, 2),
-                    'income_amount' => round($totalIncomeAmount, 2)
-                ],
+                'wallet' => $wallet,
                 'leaderboards' => [
                     'customers' => $customerLeaderboard,
                     'products' => $mostSelledProducts

@@ -1,4 +1,4 @@
-import { Alert, Col, Row, Table } from "react-bootstrap";
+import { Alert, Badge, Col, Row, Table } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import useSWR from "swr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -99,6 +99,7 @@ function OrderDetails() {
             </Space>
             <Row>
                 <Col lg={8}>
+                    <Badge>{lang.pages.order_details.badge.title}</Badge>
                     <ItemsTable data={data.data} />
                     <Alert>
                         <h5>{lang.pages.order_details.alert.title}</h5>

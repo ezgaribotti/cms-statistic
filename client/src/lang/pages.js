@@ -57,6 +57,19 @@ const lang = {
             feedback_rating: "Clasificación de comentarios",
             active_customers: "Clientes activos"
         },
+        featured: {
+            customers: "Clientes destacados",
+            products: "Productos destacados"
+        },
+        wallet: {
+            title: "Billetera",
+            profit_amount: "Total de ingresos",
+            refund_amount: "Total de devoluciones",
+            income_amount: "Total restante"
+        },
+        history: {
+            title: "Resumen anual"
+        }
     },
     order_details: {
         data: {
@@ -74,11 +87,14 @@ const lang = {
             status: "Estado del pedido",
             payment_amount: "Total pagado",
             refund_amount: "Total devuelto",
+        },
+        badge: {
+            title: "Lista de artículos"
         }
     },
     cart: {
         order_success: "Pedido creado con éxito",
-        items: {
+        data: {
             name: "Producto",
             unit_price: "Precio unitario",
             quantity: "Cantidad",

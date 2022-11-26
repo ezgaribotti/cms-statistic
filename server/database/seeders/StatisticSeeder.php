@@ -15,6 +15,29 @@ class StatisticSeeder extends Seeder
      */
     public function run()
     {
-        Statistic::factory(12)->create();
+        $months = [
+            'Enero',
+            'Febrero',
+            'Marzo',
+            'Abril',
+            'Mayo',
+            'Junio',
+            'Julio',
+            'Agosto',
+            'Septiembre',
+            'Octubre',
+            'Noviembre',
+            'Diciembre',
+        ];
+
+        foreach ($months as $month) {
+            Statistic::create([
+                'total_customers' => fake()->numberBetween(15, 20),
+                'total_orders' => fake()->numberBetween(15, 40),
+                'total_canceled_orders' => fake()->numberBetween(5, 10),
+                'total_feedbacks' => fake()->numberBetween(10, 15),
+                'month_name' => $month
+            ]);
+        }
     }
 }

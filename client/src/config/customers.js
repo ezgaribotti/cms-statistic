@@ -4,11 +4,13 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 const columns = [
     {
         name: "Nombre",
-        key: "first_name"
+        key: "first_name",
+        important: true
     },
     {
         name: "Apellido",
-        key: "last_name"
+        key: "last_name",
+        important: true
     },
     {
         name: "Teléfono",
@@ -21,6 +23,12 @@ const columns = [
     {
         name: "Dirección",
         key: "street_address"
+    },
+    {
+        name: "Compras totales",
+        key: "total_purchases",
+        important: true,
+        hide: true
     },
 ];
 

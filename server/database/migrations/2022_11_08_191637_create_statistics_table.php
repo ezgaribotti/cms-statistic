@@ -19,6 +19,8 @@ return new class extends Migration
             $table->bigInteger('total_orders');
             $table->bigInteger('total_canceled_orders');
             $table->bigInteger('total_feedbacks');
+            $table->string('month_name');
+            $table->integer('year')->default(date(chr(89)));
             $table->timestamps();
         });
     }

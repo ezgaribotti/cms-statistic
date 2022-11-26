@@ -8,16 +8,23 @@ const columns = [
     },
     {
         name: "Nombre",
-        key: "name"
+        key: "name",
+        important: true
     },
     {
         name: "Precio unitario",
-        key: "unit_price"
+        key: "unit_price",
+        important: true
     },
     {
         name: "Estado",
         key: "active",
-    }
+    },
+    {
+        name: "Ventas totales",
+        key: "total_sales",
+        important: true
+    },
 ];
 
 const inputs = [

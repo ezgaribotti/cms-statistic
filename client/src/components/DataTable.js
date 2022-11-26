@@ -7,7 +7,7 @@ import useSWR from "swr";
 import axios from "axios";
 import Space from "./Space";
 import { Link } from "react-router-dom";
-import { chr } from "../helpers";
+import { chr, clearArrayHide } from "../helpers";
 import IconGap from "./IconGap";
 import lang from "../lang";
 import routes from "../routes";
@@ -91,7 +91,7 @@ function Search({ route, data, icon, columns, customEvent }) {
                     </Col>
                 </Row>
             </Space>
-            <DataTable data={show ? search : data} icon={icon} route={route} columns={columns} customEvent={customEvent} />
+            <DataTable data={show ? search : data} icon={icon} route={route} columns={clearArrayHide(columns)} customEvent={customEvent} />
         </Fragment>
     );
 }
