@@ -1,5 +1,5 @@
 import { Fragment, useRef, useState } from "react";
-import { Button, Col, Form, Nav, Row, Table } from "react-bootstrap";
+import { Button, Col, Form, Image, Nav, Row, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight, faPenToSquare, faTrashAlt, faXmarkCircle, faFilePen } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-regular-svg-icons";
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { chr } from "../helpers";
 import IconGap from "./IconGap";
 import lang from "../lang";
+import routes from "../routes";
 
 function DataTable({ data = [], route, icon, columns = [], customEvent }) {
     return (
@@ -32,17 +33,17 @@ function DataTable({ data = [], route, icon, columns = [], customEvent }) {
                             <td>{x.id}</td>
                             {columns.map((column, index) => {
                                 return (
-                                    <td key={index}>{x[column.key]}</td>
+                                    <td key={index}>{column.key === "image" ? <Image src={axios.defaults.baseURL.replace("api", "images") + chr(47) + x[column.key]} thumbnail width={80} /> : x[column.key]}</td>
                                 )
                             })}
                             <td className="text-center">
 
                                 {icon && customEvent ? <Button variant="link" onClick={() => customEvent(x)}><FontAwesomeIcon icon={icon} size="lg" /></Button> : null}
 
-                                <Link className="btn btn-link" to={route + chr(47) + "edit" + chr(47) + x.id}>
+                                <Link className="btn btn-link" to={route + chr(47) + routes.path.edit + chr(47) + x.id}>
                                     <FontAwesomeIcon icon={faPenToSquare} size="lg" />
                                 </Link>
-                                <Link className="btn btn-link text-danger" to={route + chr(47) + "delete" + chr(47) + x.id}>
+                                <Link className="btn btn-link text-danger" to={route + chr(47) + routes.path.delete + chr(47) + x.id}>
                                     <FontAwesomeIcon icon={faTrashAlt} size="lg" />
                                 </Link>
                             </td>
@@ -80,7 +81,7 @@ function Search({ route, data, icon, columns, customEvent }) {
             <Space>
                 <Row>
                     <Col xs={4} lg={6}>
-                        <Link className="btn btn-primary" to={route + chr(47) + "create"}>
+                        <Link className="btn btn-primary" to={route + chr(47) + routes.path.create}>
                             <IconGap icon={faFilePen} size={null}>{lang.components.data_table.create_button}</IconGap>
                         </Link>
                     </Col>

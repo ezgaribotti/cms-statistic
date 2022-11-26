@@ -17,22 +17,22 @@ function FullCount({ data }) {
     const counts = [
         {
             icon: faUsers,
-            title: lang.dashboard.full_count.customers,
+            title: lang.pages.dashboard.full_count.customers,
             total_number: data.customers
         },
         {
             icon: faPeopleCarryBox,
-            title: lang.dashboard.full_count.orders,
+            title: lang.pages.dashboard.full_count.orders,
             total_number: data.orders
         },
         {
             icon: faCircleExclamation,
-            title: lang.dashboard.full_count.canceled_orders,
+            title: lang.pages.dashboard.full_count.canceled_orders,
             total_number: data.canceled_orders
         },
         {
             icon: faCommentDots,
-            title: lang.dashboard.full_count.feedbacks,
+            title: lang.pages.dashboard.full_count.feedbacks,
             total_number: data.feedbacks
         },
     ];
@@ -42,14 +42,7 @@ function FullCount({ data }) {
             {counts.map((count, index) => {
                 return (
                     <Col key={index} lg={3}>
-                        <Card>
-                            <Card.Body>
-                                <IconGap icon={count.icon}>{count.title}</IconGap>
-                                <Space top bottom={false} className="text-end">
-                                    <Card.Title>{count.total_number}</Card.Title>
-                                </Space>
-                            </Card.Body>
-                        </Card>
+                        <IconGap.Box icon={count.icon} title={count.title}>{count.total_number}</IconGap.Box>
                     </Col>
                 )
             })}
@@ -59,7 +52,7 @@ function FullCount({ data }) {
 
 function OverallStatus({ data, chartOptions }) {
 
-    const title = [lang.dashboard.overall_status.genders, lang.dashboard.overall_status.feedback_rating, lang.dashboard.overall_status.active_customers];
+    const title = [lang.pages.dashboard.overall_status.genders, lang.pages.dashboard.overall_status.feedback_rating, lang.pages.dashboard.overall_status.active_customers];
 
     return (
         <Row className={chr(103, 45) + 3}>
@@ -69,7 +62,7 @@ function OverallStatus({ data, chartOptions }) {
                         <Card>
                             <Card.Body>
                                 <Space>
-                                    <Card.Subtitle>{title[index]}</Card.Subtitle>
+                                    <h6>{title[index]}</h6>
                                 </Space>
                                 <Doughnut data={x} options={chartOptions} />
                             </Card.Body>

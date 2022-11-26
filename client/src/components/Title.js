@@ -2,22 +2,24 @@ import IconGap from "./IconGap";
 import { Link } from "react-router-dom";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import Space from "./Space";
-import { faCalendarPlus } from "@fortawesome/free-regular-svg-icons";
+import { faCalendarCheck, faCalendarPlus } from "@fortawesome/free-regular-svg-icons";
 import { Col, Row } from "react-bootstrap";
+import { chr } from "../helpers";
+import lang from "../lang";
 
-function Title({ children, size = 15 }) {
+function Title({ children, size = 30 }) {
     return (
         <Space size={size}>
-            <Link to={-1} className="btn btn-link">
+            <Link to={-1}>
                 <IconGap icon={faArrowAltCircleLeft} size="xl">{children}</IconGap>
             </Link>
         </Space>
     );
 }
 
-function Gap({ children, createdAt }) {
+function CreationDate({ children, createdAt }) {
     return (
-        <Space size={15}>
+        <Space>
             <Row className="align-items-center">
                 <Col xs={6}>
                     <Title size={null}>{children}</Title>
@@ -30,4 +32,12 @@ function Gap({ children, createdAt }) {
     );
 }
 
-export default Object.assign(Title, { IconGap: Gap });
+function LastUpdate({ updatedAt }) {
+    return (
+        <Space top bottom={false}>
+            <IconGap justifyContent="end" icon={faCalendarCheck}>{lang.components.title.last_update + chr(58, 32) + updatedAt}</IconGap>
+        </Space>
+    );
+}
+
+export default Object.assign(Title, { CreationDate, LastUpdate });

@@ -25,3 +25,11 @@ export const logout = createAsyncThunk("logout", async () => {
 });
 
 export const toggleSidebar = createAction("toggle_sidebar");
+
+export const setPayer = createAction("set_payer");
+
+export const addItem = createAction("add_item");
+
+export const removeItem = createAction("remove_item");
+
+export const cleanCart = createAction("clean_cart");

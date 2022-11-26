@@ -89,6 +89,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->preference;
         $order->status;
+        $order->customer;
 
         foreach ($order->preferenceHasOrder as $preference) {
             $preference->product;
@@ -116,7 +117,7 @@ class OrderController extends Controller
 
         $order = Order::findOrFail($id);
 
-        if ($statusId == 2) {
+        if ($statusId == 3) {
             $preference = Preference::findOrFail($order->preference_id);
             $preference->refund_amount = $preference->payment_amount;
             $preference->payment_amount = 0;

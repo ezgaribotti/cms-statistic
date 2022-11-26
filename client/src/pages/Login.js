@@ -50,22 +50,22 @@ function Login() {
                                 <Card.Body>
                                     <Form noValidate onSubmit={handleSubmit}>
                                         <Space size={20}>
-                                            <Form.Label>{lang.login.inputs.username}</Form.Label>
+                                            <Form.Label>{lang.pages.login.inputs.username}</Form.Label>
                                             <Form.Control name="username" onChange={handleChange} required />
                                         </Space>
                                         <Space size={20}>
-                                            <Form.Label>{lang.login.inputs.password}</Form.Label>
+                                            <Form.Label>{lang.pages.login.inputs.password}</Form.Label>
                                             <Form.Control name="password" type="password" onChange={handleChange} required />
                                         </Space>
                                         <div className="text-end">
-                                            <Button type="submit">{lang.login.submit_button}</Button>
+                                            <Button type="submit">{lang.pages.login.submit_button}</Button>
                                         </div>
                                     </Form>
                                 </Card.Body>
                             </Card>
                         </Space>
                         <Link to={routes.home}>
-                            <IconGap icon={faArrowAltCircleLeft} size="xl" justifyContent="center">{lang.login.go_back}</IconGap>
+                            <IconGap icon={faArrowAltCircleLeft} size="xl" justifyContent="center">{lang.pages.login.go_back}</IconGap>
                         </Link>
                     </Col>
                 </Row>

@@ -29,7 +29,7 @@ class CustomerController extends Controller
         $customer = new Customer();
 
         if ($search = $request->search) {
-            $customers = Helper::searchData($search, $customer, ['phone']);
+            $customers = Helper::searchData($search, $customer, ['phone', 'first_name', 'last_name', 'city']);
         
         } else {
             $customers = $customer->simplePaginate();

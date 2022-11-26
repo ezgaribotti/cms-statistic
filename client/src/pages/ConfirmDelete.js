@@ -18,7 +18,7 @@ function ConfirmDelete({ config }) {
     const handleDelete = async () => {
         try {
             await axios.delete(config.route + chr(47) + id);
-            toast.success(lang.confirm_delete.success);
+            toast.success(lang.pages.confirm_delete.success);
             navigate(-1);
 
         } catch (error) {
@@ -32,11 +32,11 @@ function ConfirmDelete({ config }) {
             <Card bg="danger" className="text-white">
                 <Card.Body>
                     <Space>
-                        <Card.Title>{lang.confirm_delete.alert.title}</Card.Title>
-                        <Card.Text>{lang.confirm_delete.alert.warning_text}</Card.Text>
+                        <h5>{lang.pages.confirm_delete.alert.title}</h5>
+                        <p>{lang.pages.confirm_delete.alert.warning_text}</p>
                     </Space>
                     <Button variant="danger" onClick={handleDelete}>
-                        <IconGap icon={faTrash} size={null}>{lang.confirm_delete.confirm_button}</IconGap>
+                        <IconGap icon={faTrash} size={null}>{lang.pages.confirm_delete.confirm_button}</IconGap>
                     </Button>
                 </Card.Body>
             </Card>

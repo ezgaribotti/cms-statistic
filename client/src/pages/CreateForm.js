@@ -25,9 +25,20 @@ function CreateForm({ config }) {
         event.preventDefault();
 
         if (event.currentTarget.checkValidity()) {
+            const formData = new FormData();
+
+            inputs.forEach(input => {
+                if (input.receive_file) {
+                    formData.append(input.name, event.target[input.name].files[0]);
+
+                } else {
+                    formData.append(input.name, data[input.name]);
+                }
+            });
+
             try {
-                await axios.post(config.route, data);
-                toast.success(lang.create_form.success);
+                await axios.post(config.route, formData);
+                toast.success(lang.pages.create_form.success);
                 navigate(-1);
 
             } catch (error) {
@@ -54,7 +65,7 @@ function CreateForm({ config }) {
     return (
         <Fragment>
             <Title>{config.title}</Title>
-            <BuildForm inputs={inputs} submitButton={lang.create_form.submit_button} onSubmit={handleSubmit} onChange={handleChange} />
+            <BuildForm inputs={inputs} submitButton={lang.pages.create_form.submit_button} onSubmit={handleSubmit} onChange={handleChange} />
         </Fragment>
     );
 }

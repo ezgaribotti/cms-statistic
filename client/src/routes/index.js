@@ -10,12 +10,26 @@ const routes = {
     roles: "/roles",
     update_password: "/update-password",
     statistics: "/statistics",
+    customers: "/customers",
+    genders: "/genders",
+    products: "/products",
+    provinces: "/provinces",
+    categories: "/categories",
+    orders: "/orders",
+    order_details: "/order-details",
+    feedbacks: "/feedbacks",
+    cart: "/cart",
+    create_preference: "/create-preference",
+    status: "/status",
+    sortings: "/sortings",
 };
+
+routes.id = "/:id";
 
 routes.path = {
     create: "create",
-    edit: "edit/:id",
-    delete: "delete/:id",
-}
+    edit: "edit",
+    delete: "delete",
+};
 
 export default routes;

@@ -27,7 +27,7 @@ function ControlPanel() {
                 <footer>
                     <Container>
                         <Space top className="text-center">
-                            <h6 className="text-muted">{lang.layouts.control_panel.copyright} &copy;</h6>
+                            <h6 className="text-muted">{lang.layouts.control_panel.footer.copyright} &copy;</h6>
                         </Space>
                     </Container>
                 </footer>

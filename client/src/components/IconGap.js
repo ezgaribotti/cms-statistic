@@ -1,4 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card } from "react-bootstrap";
+import Space from "./Space";
 
 function IconGap({ icon, size = "lg", children, justifyContent = "start", className }) {
 
@@ -19,4 +21,17 @@ function IconGap({ icon, size = "lg", children, justifyContent = "start", classN
     );
 }
 
-export default IconGap;
+function Box({ icon, title, children }) {
+    return (
+        <Card>
+            <Card.Body>
+                <IconGap icon={icon}>{title}</IconGap>
+                <Space top bottom={false} className="text-end">
+                    <h5>{children}</h5>
+                </Space>
+            </Card.Body>
+        </Card>
+    );
+}
+
+export default Object.assign(IconGap, { Box });

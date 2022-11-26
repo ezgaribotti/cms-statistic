@@ -7,8 +7,6 @@ import axios from "axios";
 import Space from "../components/Space";
 import lang from "../lang";
 import { chr } from "../helpers";
-import IconGap from "../components/IconGap";
-import { faCalendarCheck } from "@fortawesome/free-regular-svg-icons";
 
 function EditForm({ config }) {
 
@@ -33,8 +31,25 @@ function EditForm({ config }) {
 
         if (event.currentTarget.checkValidity()) {
             try {
-                await axios.put(config.route + chr(47) + id, data);
-                toast.success(lang.edit_form.success);
+                if (config.transport_file) {
+                    const formData = new FormData();
+
+                    inputs.forEach(input => {
+                        if (input.receive_file) {
+                            let uploadedFile = event.target[input.name].files[0];
+                            if (uploadedFile) formData.append(input.name, uploadedFile);
+
+                        } else {
+                            formData.append(input.name, data[input.name]);
+                        }
+                    });
+
+                    await axios.post(config.route + chr(47) + id, formData);
+
+                } else {
+                    await axios.put(config.route + chr(47) + id, data);
+                }
+                toast.success(lang.pages.edit_form.success);
                 navigate(-1);
 
             } catch (error) {
@@ -64,11 +79,11 @@ function EditForm({ config }) {
 
     return (
         <Fragment>
-            <Title.IconGap createdAt={defaultInputs.created_at}>{config.title + chr(32, 47, 32) + id}</Title.IconGap>
+            <Title.CreationDate createdAt={defaultInputs.created_at}>{config.title + chr(32, 47, 32) + id}</Title.CreationDate>
             <Space size={15}>
-                <BuildForm inputs={inputs} submitButton={lang.edit_form.submit_button} modeEdit onSubmit={handleSubmit} onChange={handleChange} />
+                <BuildForm inputs={inputs} submitButton={lang.pages.edit_form.submit_button} modeEdit onSubmit={handleSubmit} onChange={handleChange} />
             </Space>
-            <IconGap justifyContent="end" icon={faCalendarCheck}>{lang.edit_form.default_inputs.updated_at + chr(58, 32) + defaultInputs.updated_at}</IconGap>
+            <Title.LastUpdate updatedAt={defaultInputs.updated_at} />
         </Fragment>
     );
 }
