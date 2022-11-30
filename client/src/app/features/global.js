@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toggleSidebar } from "../actions";
+import { toggleLogin, toggleSidebar } from "../actions";
 
 const initialState = {
     sidebar: true,
+    login: false,
 };
 
 const __init__ = createSlice({
@@ -13,7 +14,10 @@ const __init__ = createSlice({
     extraReducers: (builder) => {
         builder.addCase(toggleSidebar, (state, action) => {
             state.payload.sidebar = !state.payload.sidebar
-        })
+        });
+        builder.addCase(toggleLogin, (state, action) => {
+            state.payload.login = !state.payload.login
+        });
     }
 });
 

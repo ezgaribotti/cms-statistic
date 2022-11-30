@@ -1,48 +1,49 @@
 import routes from "../routes";
 import { faPeopleCarryBox } from "@fortawesome/free-solid-svg-icons";
+import lang from "../lang";
 
 const columns = [
     {
-        name: "Número de pedido",
+        name: lang.inputs.order_number,
         key: "order_number"
     },
     {
-        name: "Estado",
+        name: lang.inputs.status,
         key: "status_id"
     },
     {
-        name: "Fecha de creación",
+        name: lang.inputs.creation_date,
         key: "created_at",
     },
     {
-        name: "Fecha de actualización",
+        name: lang.inputs.last_update,
         key: "updated_at",
     },
 ];
 
 const inputs = [
     {
-        title: "Número de pedido",
+        title: lang.inputs.order_number,
         name: "order_number",
         required: false,
         disabled: true,
     },
     {
-        title: "Estado",
+        title: lang.inputs.status,
         name: "status_id",
         type: "select",
         route: routes.status,
         reference_key: "name",
     },
     {
-        title: "Descripción",
+        title: lang.inputs.description,
         name: "description",
         required: false,
     },
 ];
 
 const config = {
-    title: "Pedidos",
+    title: lang.config.orders,
     icon: faPeopleCarryBox,
     route: routes.orders,
     build_form: {

@@ -9,7 +9,7 @@ import store from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-axios.defaults.baseURL = "http://localhost:8000/api";
+axios.defaults.baseURL = "https://cms.ezequielgaribotti.com/api";
 
 const fetcher = (...args) => axios.get(...args).then(response => response.data);
 

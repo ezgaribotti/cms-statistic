@@ -16,23 +16,23 @@ import CustomerDetails from "../components/CustomerDetails";
 function OverallDetails({ data }) {
     const details = [
         {
-            title: lang.pages.order_details.details.order_number,
+            title: lang.inputs.order_number,
             icon: faPeopleCarryBox,
             data: data.order_number
         },
         {
-            title: lang.pages.order_details.details.status,
+            title: lang.inputs.status,
             icon: faTruck,
             data: data.status.name
         },
         {
-            title: lang.pages.order_details.details.payment_amount,
+            title: lang.inputs.total_amount,
             icon: faArrowTrendUp,
             data: data.preference.payment_amount,
             dollar: true
         },
         {
-            title: lang.pages.order_details.details.refund_amount,
+            title: lang.inputs.refund_amount,
             icon: faArrowTrendDown,
             data: data.preference.refund_amount,
             dollar: true
@@ -40,7 +40,7 @@ function OverallDetails({ data }) {
     ];
 
     return (
-        <Row>
+        <Row className={chr(103, 45) + 3}>
             {details.map((detail, index) => {
                 return (
                     <Col lg={3} key={index}>
@@ -57,11 +57,11 @@ function ItemsTable({ data }) {
         <Table responsive bordered hover className="bg-white">
             <thead>
                 <tr>
-                    <th>{lang.pages.order_details.data.id}</th>
-                    <th>{lang.pages.order_details.data.name}</th>
-                    <th>{lang.pages.order_details.data.fixed_price}</th>
-                    <th>{lang.pages.order_details.data.quantity}</th>
-                    <th>{lang.pages.order_details.data.partial_amount}</th>
+                    <th>{lang.inputs.id}</th>
+                    <th>{lang.inputs.name}</th>
+                    <th>{lang.inputs.fixed_price}</th>
+                    <th>{lang.inputs.quantity}</th>
+                    <th>{lang.inputs.partial_amount}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -99,10 +99,10 @@ function OrderDetails() {
             </Space>
             <Row>
                 <Col lg={8}>
-                    <Badge>{lang.pages.order_details.badge.title}</Badge>
+                    <Badge>{lang.pages.order_details.title}</Badge>
                     <ItemsTable data={data.data} />
                     <Alert>
-                        <h5>{lang.pages.order_details.alert.title}</h5>
+                        <h5>{lang.inputs.description}</h5>
                         <p>{data.data.description}</p>
                     </Alert>
                 </Col>

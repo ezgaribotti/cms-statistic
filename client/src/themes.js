@@ -1,6 +1,6 @@
 const themes = {
-    primary: "#0f1626",
-    secondary: "#9fa2a8",
+    primary: "#a7acb1",
+    secondary: "#6f737d",
     tertiary: "#ff533d",
     fourth: "#ffc107"
 };

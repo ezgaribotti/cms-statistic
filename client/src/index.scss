@@ -4,7 +4,6 @@ $font-family-base: "Poppins", sans-serif;
 $font-size-base: .9rem;
 
 $border-radius: 0rem;
-$border-radius-lg: 0rem;
 
 $light: #f5f5f5;
 $primary: #0f1626;
@@ -15,19 +14,22 @@ $text-muted: #6c757d;
 $nav-link-color: $text-muted;
 $nav-link-hover-color: white;
 
+$input-border-width: 0rem;
+
+$input-btn-focus-color-opacity: 0;
+
 $offcanvas-horizontal-width: 240px;
-$offcanvas-bg-color: $primary;
 $offcanvas-transition-duration: .4s;
 
+$card-border-width: 0rem;
+
 $dropdown-item-padding-y: .6rem;
+
+$navbar-dark-color: white;
 
 @import "~bootstrap/scss/bootstrap.scss";
 
 @import "~react-toastify/dist/ReactToastify.min.css";
-
-body {
-    background-color: $light;
-}
 
 main {
     transition: $offcanvas-transition-duration ease-in-out;
@@ -37,7 +39,40 @@ button, a {
     text-decoration: none !important;
 }
 
-section {
+input, select, textarea {
+    border-bottom: 1px solid #ced4da !important;
+}
+
+body {
+    background-color: $light;
+}
+
+header {
     height: 100vh;
-    width: auto;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./assets/images/header.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+article {
+    height: 60vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./assets/images/laptop.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    background-color: $light;
+}
+
+section {
+    background-color: white;
 }

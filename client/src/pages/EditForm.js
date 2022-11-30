@@ -49,7 +49,7 @@ function EditForm({ config }) {
                 } else {
                     await axios.put(config.route + chr(47) + id, data);
                 }
-                toast.success(lang.pages.edit_form.success);
+                toast.success(lang.success.edit);
                 navigate(-1);
 
             } catch (error) {
@@ -60,28 +60,28 @@ function EditForm({ config }) {
         }
     };
 
-    const handleSetDefaultValues = async inputs => {
-
-        let { data } = await axios.get(config.route + chr(47) + id);
-
-        inputs.forEach(input => {
-            input.defaultValue = data.data[input.name];
-            setData({ name: input.name, value: data.data[input.name] });
-        });
-
-        setDefaultInputs({ created_at: data.data.created_at, updated_at: data.data.updated_at });
-        setInputs(inputs);
-    };
-
     useEffect(() => {
+        const handleSetDefaultValues = async inputs => {
+
+            let { data } = await axios.get(config.route + chr(47) + id);
+    
+            inputs.forEach(input => {
+                input.defaultValue = data.data[input.name];
+                setData({ name: input.name, value: data.data[input.name] });
+            });
+    
+            setDefaultInputs({ created_at: data.data.created_at, updated_at: data.data.updated_at });
+            setInputs(inputs);
+        };
+        
         handleSetDefaultValues(config.build_form.inputs);
-    }, []);
+    }, [id, config]);
 
     return (
         <Fragment>
             <Title.CreationDate createdAt={defaultInputs.created_at}>{config.title + chr(32, 47, 32) + id}</Title.CreationDate>
             <Space size={15}>
-                <BuildForm inputs={inputs} submitButton={lang.pages.edit_form.submit_button} modeEdit onSubmit={handleSubmit} onChange={handleChange} />
+                <BuildForm inputs={inputs} submitButton={lang.buttons.edit} modeEdit onSubmit={handleSubmit} onChange={handleChange} />
             </Space>
             <Title.LastUpdate updatedAt={defaultInputs.updated_at} />
         </Fragment>

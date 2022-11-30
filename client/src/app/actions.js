@@ -33,3 +33,7 @@ export const addItem = createAction("add_item");
 export const removeItem = createAction("remove_item");
 
 export const cleanCart = createAction("clean_cart");
+
+export const toggleLogin = createAction("toggle_login");
+
+export const setShowCartBar = createAction("set_show_cart_bar");

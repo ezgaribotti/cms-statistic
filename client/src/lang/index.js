@@ -1,13 +1,21 @@
-import errors from "./errors";
-import layouts from "./layouts";
+import buttons from "./buttons";
 import components from "./components";
+import errors from "./errors";
+import home from "./home";
+import inputs from "./inputs";
 import pages from "./pages";
+import success from "./success";
+import config from "./config";
 
 const lang = {
-    errors,
-    layouts,
+    buttons,
     components,
-    pages
+    errors,
+    home,
+    inputs,
+    pages,
+    success,
+    config,
 };
 
 export default lang;

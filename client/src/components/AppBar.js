@@ -18,13 +18,12 @@ function AppBar() {
                     <FontAwesomeIcon icon={faBars} size="xl" />
                 </Button>
                 <Dropdown>
-
                     <Dropdown.Toggle variant="link" className="hstack">
                         <IconGap icon={faCircleUser} size="xl">{full_name}</IconGap>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item as="button" onClick={() => dispatch(logout())}>
-                            <IconGap icon={faRightFromBracket} size={null}>{lang.components.app_bar.logout_button}</IconGap>
+                            <IconGap icon={faRightFromBracket} size={null}>{lang.buttons.logout}</IconGap>
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>

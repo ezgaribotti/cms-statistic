@@ -9,16 +9,13 @@ function CheckAccessToken() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const accessToken = sessionStorage.getItem("access_token");
-
     useEffect(() => {
+        const accessToken = sessionStorage.getItem("access_token");
 
-        accessToken ? dispatch(recoverUserProfile(accessToken)).then(unwrapResult).then(response => navigate(-1)).catch(error => navigate(routes.login)) : navigate(routes.login);
-    }, []);
+        accessToken ? dispatch(recoverUserProfile(accessToken)).then(unwrapResult).then(() => navigate(-1)).catch(() => navigate(routes.index)) : navigate(routes.index);
+    }, [dispatch, navigate]);
 
-    return (
-        <div></div>
-    );
+    return null;
 }
 
 export default CheckAccessToken;

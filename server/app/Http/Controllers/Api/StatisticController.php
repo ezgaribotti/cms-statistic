@@ -83,7 +83,7 @@ class StatisticController extends Controller
         $totalProfitAmount = Preference::sum('payment_amount');
         $totalRefundAmount = Preference::sum('refund_amount');
 
-        $wallet = ['profit_amount' => ['name' => 'Ingreso total', 'total_number' => round($totalProfitAmount, 2)], 'refund_amount' => ['name' => 'Devolución total', 'total_number' => round($totalRefundAmount, 2)]];
+        $wallet = ['profit_amount' => ['name' => 'Total de ingresos', 'total_number' => round($totalProfitAmount, 2)], 'refund_amount' => ['name' => 'Total reembolsado', 'total_number' => round($totalRefundAmount, 2)]];
 
         return response()->json([
             'data' => [

@@ -6,7 +6,8 @@ import Loader from "../components/Loader";
 import { useSelector } from "react-redux";
 import { Fragment, Suspense } from "react";
 import Space from "../components/Space";
-import lang from "../lang";
+import Footer from "../components/Footer";
+import CartBar from "../components/CartBar";
 
 function ControlPanel() {
 
@@ -15,6 +16,7 @@ function ControlPanel() {
     return (
         <Fragment>
             <Sidebar />
+            <CartBar />
             <main style={{ marginLeft: sidebar ? (window.screen.width > 810 ? 240 : 0) : 0 }}>
                 <AppBar />
                 <Container>
@@ -24,13 +26,7 @@ function ControlPanel() {
                         </Space>
                     </Suspense>
                 </Container>
-                <footer>
-                    <Container>
-                        <Space top className="text-center">
-                            <h6 className="text-muted">{lang.layouts.control_panel.footer.copyright} &copy;</h6>
-                        </Space>
-                    </Container>
-                </footer>
+                <Footer />
             </main>
         </Fragment>
     );

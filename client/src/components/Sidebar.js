@@ -15,14 +15,15 @@ function Sidebar() {
     const { sidebar } = useSelector(state => state.global.payload);
 
     return (
-        <Offcanvas show={sidebar} scroll backdrop={false}>
+        <Offcanvas show={sidebar} className="bg-primary text-white" scroll backdrop={false}>
             <Offcanvas.Header>
-                <Image src={images.logo} width={60} />
+                <Image src={images.logo} width={30} />
                 <Button onClick={() => dispatch(toggleSidebar())}>
                     <FontAwesomeIcon icon={faXmark} size="xl" />
                 </Button>
             </Offcanvas.Header>
             <Offcanvas.Body>
+                <h6>{lang.components.sidebar.title} &copy;</h6>
                 <h6 className="small text-muted">{lang.components.sidebar.quick_access}</h6>
                 <Nav className="flex-column">
                     {Object.entries(config).map(([key, x], index) => {

@@ -19,22 +19,22 @@ function FullCount({ data }) {
     const counts = [
         {
             icon: faUsers,
-            title: lang.pages.dashboard.full_count.customers,
+            title: lang.config.customers,
             total_number: data.customers
         },
         {
             icon: faPeopleCarryBox,
-            title: lang.pages.dashboard.full_count.orders,
+            title: lang.config.orders,
             total_number: data.orders
         },
         {
             icon: faCircleExclamation,
-            title: lang.pages.dashboard.full_count.canceled_orders,
+            title: lang.config.canceled_orders,
             total_number: data.canceled_orders
         },
         {
             icon: faCommentDots,
-            title: lang.pages.dashboard.full_count.feedbacks,
+            title: lang.config.feedbacks,
             total_number: data.feedbacks
         },
     ];
@@ -56,40 +56,40 @@ function Wallet({ data, chartOptions }) {
 
     const wallet = [
         {
-            title: lang.pages.dashboard.wallet.profit_amount,
+            title: lang.inputs.profit_amount,
             data: data.profit_amount.total_number
         },
         {
-            title: lang.pages.dashboard.wallet.refund_amount,
+            title: lang.inputs.refund_amount,
             data: data.refund_amount.total_number
         },
         {
-            title: lang.pages.dashboard.wallet.income_amount,
+            title: lang.inputs.total_amount,
             data: (data.profit_amount.total_number - data.refund_amount.total_number).toFixed(2)
         },
     ];
 
     return (
-        <Card>
-            <Card.Body>
-                <Space>
-                    <h6>{lang.pages.dashboard.wallet.title}</h6>
-                </Space>
-                <Space>
-                    <Pie data={ccdp(data)} options={chartOptions} />
-                </Space>
-                <ListGroup variant="flush">
-                    {wallet.map((x, index) => {
-                        return (
-                            <ListGroup.Item key={index}>
-                            <p className="text-muted small">{x.title}</p>
-                            <h6>${x.data}</h6>
-                        </ListGroup.Item>
-                        )
-                    })}
-                </ListGroup>
-            </Card.Body>
-        </Card>
+        <Fragment>
+            <Badge>{lang.pages.dashboard.wallet}</Badge>
+            <Card>
+                <Card.Body>
+                    <Space>
+                        <Pie data={ccdp(data)} options={chartOptions} />
+                    </Space>
+                    <ListGroup variant="flush">
+                        {wallet.map((x, index) => {
+                            return (
+                                <ListGroup.Item key={index}>
+                                    <p className="text-muted small">{x.title}</p>
+                                    <h6>${x.data}</h6>
+                                </ListGroup.Item>
+                            )
+                        })}
+                    </ListGroup>
+                </Card.Body>
+            </Card>
+        </Fragment>
     );
 }
 
@@ -130,18 +130,16 @@ function Leaderboard({ route, columns = [], data }) {
 
 function OverallStatus({ data, chartOptions }) {
 
-    const titles = [lang.pages.dashboard.overall_status.genders, lang.pages.dashboard.overall_status.feedback_rating, lang.pages.dashboard.overall_status.active_customers];
+    const titles = [lang.pages.dashboard.genders, lang.pages.dashboard.feedback_rating, lang.pages.dashboard.active_customers];
 
     return (
         <Row className={chr(103, 45) + 3}>
             {[ccdp(data.genders), ccdp(data.feedback_rating), ccdp(data.active_customers)].map((x, index) => {
                 return (
                     <Col lg={4} key={index}>
+                        <Badge>{titles[index]}</Badge>
                         <Card>
                             <Card.Body>
-                                <Space>
-                                    <h6>{titles[index]}</h6>
-                                </Space>
                                 <Pie data={x} options={chartOptions} />
                             </Card.Body>
                         </Card>
@@ -188,21 +186,19 @@ function Dashboard() {
                 <Col lg={8}>
                     <Row className={chr(103, 45) + 3}>
                         <Col lg={12}>
+                            <Badge>{lang.pages.dashboard.history}</Badge>
                             <Card>
                                 <Card.Body>
-                                    <Space>
-                                        <h6>{lang.pages.dashboard.history.title}</h6>
-                                    </Space>
                                     <Line data={ccdh(statistics.data.statistics)} options={chartOptions} />
                                 </Card.Body>
                             </Card>
                         </Col>
                         <Col lg={12}>
-                            <Badge>{lang.pages.dashboard.featured.customers}</Badge>
+                            <Badge>{lang.pages.dashboard.featured_customers}</Badge>
                             <Leaderboard route={config.customers.route} columns={clearArrayImportant(config.customers.columns)} data={statistics.data.leaderboards.customers} />
                         </Col>
                         <Col lg={12}>
-                            <Badge>{lang.pages.dashboard.featured.products}</Badge>
+                            <Badge>{lang.pages.dashboard.featured_products}</Badge>
                             <Leaderboard route={config.products.route} columns={clearArrayImportant(config.products.columns)} data={statistics.data.leaderboards.products} />
                         </Col>
                     </Row>

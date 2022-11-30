@@ -27,28 +27,28 @@ export const convertChartDataHistory = data => {
 
     const datasets = {
         customers: {
-            label: lang.pages.dashboard.full_count.customers,
+            label: lang.config.customers,
             data: [],
             borderColor: themes.primary,
             backgroundColor: themes.primary,
             tension: tension,
         },
         orders: {
-            label: lang.pages.dashboard.full_count.orders,
+            label: lang.config.orders,
             data: [],
             borderColor: themes.secondary,
             backgroundColor: themes.secondary,
             tension: tension
         },
         canceled_orders: {
-            label: lang.pages.dashboard.full_count.canceled_orders,
+            label: lang.config.canceled_orders,
             data: [],
             borderColor: themes.tertiary,
             backgroundColor: themes.tertiary,
             tension: tension
         },
         feedbacks: {
-            label: lang.pages.dashboard.full_count.feedbacks,
+            label: lang.config.feedbacks,
             data: [],
             borderColor: themes.fourth,
             backgroundColor: themes.fourth,

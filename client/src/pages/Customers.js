@@ -17,7 +17,7 @@ function Customers() {
 
     const handleSetPayer = data => {
         dispatch(setPayer(data));
-        toast.success(lang.pages.customers.set_payer);
+        toast.success(lang.success.set_payer);
         return navigate(routes.cart);
     };
 

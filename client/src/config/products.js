@@ -1,27 +1,28 @@
 import routes from "../routes";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
+import lang from "../lang";
 
 const columns = [
     {
-        name: "Imagen",
+        name: lang.inputs.image,
         key: "image"
     },
     {
-        name: "Nombre",
+        name: lang.inputs.name,
         key: "name",
         important: true
     },
     {
-        name: "Precio unitario",
+        name: lang.inputs.unit_price,
         key: "unit_price",
         important: true
     },
     {
-        name: "Estado",
+        name: lang.inputs.status,
         key: "active",
     },
     {
-        name: "Ventas totales",
+        name: lang.inputs.total_sales,
         key: "total_sales",
         important: true
     },
@@ -29,43 +30,43 @@ const columns = [
 
 const inputs = [
     {
-        title: "Nombre",
+        title: lang.inputs.name,
         name: "name",
         required: true
     },
     {
-        title: "Precio unitario",
+        title: lang.inputs.unit_price,
         name: "unit_price",
         type: "number",
         required: true
     },
     {
-        title: "Activo",
+        title: lang.inputs.status,
         name: "active",
         type: "select",
         options: ["Oculto" , "Visible"]
     },
     {
-        title: "Categoria",
+        title: lang.inputs.category,
         name: "category_id",
         type: "select",
         route: routes.categories,
         reference_key: "name"
     },
     {
-        title: "Descripción",
+        title: lang.inputs.description,
         name: "description",
         required: false,
     },
     {
-        title: "Imagen",
+        title: lang.inputs.image,
         name: "image_file",
         type: "file",
         receive_file: true,
         required: false,
     },
     {
-        title: "Total de ventas",
+        title: lang.inputs.total_sales,
         name: "total_sales",
         disabled: true,
         required: false,
@@ -73,7 +74,7 @@ const inputs = [
 ];
 
 const config = {
-    title: "Productos",
+    title: lang.config.products,
     icon: faStore,
     route: routes.products,
     build_form: {

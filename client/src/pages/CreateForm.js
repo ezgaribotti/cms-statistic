@@ -38,7 +38,7 @@ function CreateForm({ config }) {
 
             try {
                 await axios.post(config.route, formData);
-                toast.success(lang.pages.create_form.success);
+                toast.success(lang.success.create);
                 navigate(-1);
 
             } catch (error) {
@@ -60,12 +60,12 @@ function CreateForm({ config }) {
 
     useEffect(() => {
         handleClearDefaults(config.build_form.inputs);
-    }, []);
+    }, [config.build_form.inputs]);
 
     return (
         <Fragment>
             <Title>{config.title}</Title>
-            <BuildForm inputs={inputs} submitButton={lang.pages.create_form.submit_button} onSubmit={handleSubmit} onChange={handleChange} />
+            <BuildForm inputs={inputs} submitButton={lang.buttons.create} onSubmit={handleSubmit} onChange={handleChange} />
         </Fragment>
     );
 }

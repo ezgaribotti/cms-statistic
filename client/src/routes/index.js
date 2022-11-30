@@ -1,6 +1,6 @@
 
 const routes = {
-    home: "/",
+    index: "/",
     login: "/login",
     check_access_token: "/check-access-token",
     dashboard: "/dashboard",
@@ -31,5 +31,11 @@ routes.path = {
     edit: "edit",
     delete: "delete",
 };
+
+routes.home = {
+    about_us: "about-us",
+    usage: "usage",
+    create_feedback: "create-feedback",
+}
 
 export default routes;

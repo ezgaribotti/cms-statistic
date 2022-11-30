@@ -35,7 +35,7 @@ function CreationDate({ children, createdAt }) {
 function LastUpdate({ updatedAt }) {
     return (
         <Space top bottom={false}>
-            <IconGap justifyContent="end" icon={faCalendarCheck}>{lang.components.title.last_update + chr(58, 32) + updatedAt}</IconGap>
+            <IconGap justifyContent="end" icon={faCalendarCheck}>{lang.inputs.last_update + chr(58, 32) + updatedAt}</IconGap>
         </Space>
     );
 }

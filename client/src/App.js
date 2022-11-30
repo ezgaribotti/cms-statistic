@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import routes from "./routes";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
 import CheckAccessToken from "./pages/CheckAccessToken";
 import Dashboard from "./pages/Dashboard";
 import ControlPanel from "./layouts/ControlPanel";
@@ -22,6 +21,7 @@ import Feedbacks from "./pages/Feedbacks";
 import Orders from "./pages/Orders";
 import OrderDetails from "./pages/OrderDetails";
 import Cart from "./pages/Cart";
+import { Suspense } from "react";
 
 function IsAuth() {
     const { auth } = useSelector(state => state.auth.payload);
@@ -48,8 +48,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={routes.home} element={<Home />} />
-                <Route path={routes.login} element={<Login />} />
+                <Route path={routes.index} element={<Suspense><Home /></Suspense>} />
                 <Route path={routes.check_access_token} element={<CheckAccessToken />} />
                 <Route element={<IsAuth />}>
                     <Route element={<ControlPanel />}>
@@ -92,7 +91,7 @@ function App() {
                         <Route path={routes.feedbacks}>
                             <Route index element={<Feedbacks />} />
                             <Route path={routes.path.edit + routes.id} element={<EditForm config={config.feedbacks} />} />
-                            <Route path={routes.path.create} element={<CreateForm config={config.feedbacks} />} />
+                            <Route path={routes.path.create} element={<Navigate to={routes.index} />} />
                             <Route path={routes.path.delete + routes.id} element={<ConfirmDelete config={config.feedbacks} />} />
                         </Route>
                     </Route>

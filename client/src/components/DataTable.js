@@ -82,7 +82,7 @@ function Search({ route, data, icon, columns, customEvent }) {
                 <Row>
                     <Col xs={4} lg={6}>
                         <Link className="btn btn-primary" to={route + chr(47) + routes.path.create}>
-                            <IconGap icon={faFilePen} size={null}>{lang.components.data_table.create_button}</IconGap>
+                            <IconGap icon={faFilePen} size={null}>{lang.buttons.create}</IconGap>
                         </Link>
                     </Col>
                     <Col>

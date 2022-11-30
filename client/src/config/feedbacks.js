@@ -1,33 +1,34 @@
 import routes from "../routes";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import lang from "../lang";
 
 const columns = [
     {
-        name: "Número de pedido",
+        name: lang.inputs.order_number,
         key: "tracking_number"
     },
     {
-        name: "Descripción",
+        name: lang.inputs.description,
         key: "description"
     },
 ];
 
 const inputs = [
     {
-        title: "Número de pedido",
+        title: lang.inputs.order_number,
         name: "tracking_number",
         required: false,
         disabled: true,
     },
     {
-        title: "Clasificación",
+        title: lang.inputs.sorting,
         name: "sorting_id",
         type: "select",
         route: routes.sortings,
         reference_key: "name"
     },
     {
-        title: "Descripción",
+        title: lang.inputs.description,
         name: "description",
         required: false,
         disabled: true,
@@ -35,7 +36,7 @@ const inputs = [
 ];
 
 const config = {
-    title: "Comentarios",
+    title: lang.config.feedbacks,
     icon: faCommentDots,
     build_form: {
         reference_id: null,

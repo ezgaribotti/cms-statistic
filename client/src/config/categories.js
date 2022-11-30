@@ -1,23 +1,24 @@
 import routes from "../routes";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
+import lang from "../lang";
 
 const columns = [
     {
-        name: "Nombre",
+        name: lang.inputs.name,
         key: "name"
     },
 ];
 
 const inputs = [
     {
-        title: "Nombre",
+        title: lang.inputs.name,
         name: "name",
         required: true
     },
 ];
 
 const config = {
-    title: "Categorias",
+    title: lang.config.categories,
     icon: faTags,
     route: routes.categories,
     build_form: {
