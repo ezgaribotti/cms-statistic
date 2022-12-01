@@ -6,7 +6,7 @@ function SelectData({ input, onChange }) {
     const { data } = useSWRImmutable(input.route);
     return (
         <Form.Select onChange={onChange} name={input.name} required>
-            {input.defaultValue ? <option value={input.defaultValue}>{data.data[input.defaultValue - 1][input.reference_key]}</option> : <option></option>}
+            {input.defaultValue ? <option value={input.defaultValue}>{data.data.find(x => x.id === input.defaultValue)[input.reference_key]}</option> : <option></option>}
             {data.data.map((x, index) => {
                 return (
                     <option key={index} value={x.id}>{x[input.reference_key]}</option>
