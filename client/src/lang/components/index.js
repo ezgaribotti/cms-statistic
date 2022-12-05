@@ -26,7 +26,12 @@ lang.sidebar = {
 
 lang.update_password = {
     title: "Cambiar contraseña",
-    warning_text: "Si olvida su contraseña, comuníquese con su administrador o el soporte para restablecerla",
+    warning_text: "Si olvida su contraseña, comuníquese con su administrador o el soporte técnico para restablecerla",
+};
+
+lang.change_username = {
+    title: "Cambiar nombre de usuario",
+    warning_text: "Si desea cambiar su nombre de usuario o nombre de perfil, comuníquese con su administrador o soporte técnico para realizar el cambio",
 };
 
 export default lang;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Fragment, useReducer } from "react";
-import { Alert, Badge, Button, Card, Col, Form, Row } from "react-bootstrap";
+import { Alert, Badge, Button, Card, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import lang from "../lang";
 import routes from "../routes";
@@ -35,32 +35,27 @@ function UpdatePassword() {
 
     return (
         <Fragment>
-            <Alert variant="warning">
-                <h5>{lang.components.update_password.title}</h5>
-                <p>{lang.components.update_password.warning_text}</p>
-            </Alert>
-            <Row>
-                <Col lg={6} className="ms-auto">
-                    <Badge>{lang.components.update_password.title}</Badge>
-                    <Card>
-                        <Card.Body>
-                            <Form noValidate onSubmit={handleSubmit}>
-                                <Space size={20}>
-                                    <Form.Label>{lang.inputs.password}</Form.Label>
-                                    <Form.Control name="password" type="password" onChange={handleChange} required />
-                                </Space>
-                                <Space size={20}>
-                                    <Form.Label>{lang.inputs.password_confirmation}</Form.Label>
-                                    <Form.Control name="password_confirmation" type="password" onChange={handleChange} required />
-                                </Space>
-                                <div className="text-end">
-                                    <Button type="submit">{lang.buttons.accept}</Button>
-                                </div>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+            <Badge>{lang.components.update_password.title}</Badge>
+            <Card>
+                <Card.Body>
+                    <Form noValidate onSubmit={handleSubmit}>
+                        <Space size={20}>
+                            <Form.Label>{lang.inputs.password}</Form.Label>
+                            <Form.Control name="password" type="password" onChange={handleChange} required />
+                        </Space>
+                        <Space size={20}>
+                            <Form.Label>{lang.inputs.password_confirmation}</Form.Label>
+                            <Form.Control name="password_confirmation" type="password" onChange={handleChange} required />
+                        </Space>
+                        <Space>
+                            <Alert variant="warning">{lang.components.update_password.warning_text}</Alert>
+                        </Space>
+                        <div className="text-end">
+                            <Button type="submit">{lang.buttons.accept}</Button>
+                        </div>
+                    </Form>
+                </Card.Body>
+            </Card>
         </Fragment>
     );
 }

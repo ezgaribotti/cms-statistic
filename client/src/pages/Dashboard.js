@@ -6,7 +6,7 @@ import { Row, Col, Card, ListGroup, Table, Badge } from "react-bootstrap";
 import IconGap from "../components/IconGap";
 import Space from "../components/Space";
 import Title from "../components/Title";
-import { chr, convertChartDataPie as ccdp, convertChartDataHistory as ccdh, clearArrayImportant } from "../helpers";
+import { chr, convertChartDataPie as ccdp, convertChartDataHistory as ccdh, clearArrayImportant, addPercentages } from "../helpers";
 import config from "../config";
 import { Chart, ArcElement, Tooltip, Legend, LinearScale, CategoryScale, PointElement, LineElement } from "chart.js";
 import { Pie, Line } from "react-chartjs-2";
@@ -14,6 +14,7 @@ import themes from "../themes";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 function FullCount({ data }) {
     const counts = [
@@ -75,7 +76,7 @@ function Wallet({ data, chartOptions }) {
             <Card>
                 <Card.Body>
                     <Space>
-                        <Pie data={ccdp(data)} options={chartOptions} />
+                        <Pie data={ccdp(data)} options={addPercentages(chartOptions)} plugins={[ChartDataLabels]} />
                     </Space>
                     <ListGroup variant="flush">
                         {wallet.map((x, index) => {
@@ -140,7 +141,7 @@ function OverallStatus({ data, chartOptions }) {
                         <Badge>{titles[index]}</Badge>
                         <Card>
                             <Card.Body>
-                                <Pie data={x} options={chartOptions} />
+                                <Pie data={x} options={addPercentages(chartOptions)} plugins={[ChartDataLabels]} />
                             </Card.Body>
                         </Card>
                     </Col>

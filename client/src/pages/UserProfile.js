@@ -9,6 +9,7 @@ import lang from "../lang";
 import { chr } from "../helpers";
 import { Fragment } from "react";
 import UpdatePassword from "../components/UpdatePassword";
+import ChangeUsername from "../components/ChangeUsername";
 
 function UserProfile() {
     const { user_profile } = useSelector(state => state.auth.payload);
@@ -50,7 +51,14 @@ function UserProfile() {
                     })}
                 </Row>
             </Space>
-            <UpdatePassword />
+            <Row>
+                <Col lg={6}>
+                    <UpdatePassword />
+                </Col>
+                <Col>
+                    <ChangeUsername />
+                </Col>
+            </Row>
             <Title.LastUpdate updatedAt={user_profile.updated_at} />
         </Fragment>
     );

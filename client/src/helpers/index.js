@@ -23,7 +23,8 @@ export const convertChartDataPie = data => {
 
 export const convertChartDataHistory = data => {
 
-    const tension = 0.2; 
+    const tension = 0.2;
+    const pointRadius = 5;
 
     const datasets = {
         customers: {
@@ -32,27 +33,31 @@ export const convertChartDataHistory = data => {
             borderColor: themes.primary,
             backgroundColor: themes.primary,
             tension: tension,
+            pointRadius: pointRadius,
         },
         orders: {
             label: lang.config.orders,
             data: [],
             borderColor: themes.secondary,
             backgroundColor: themes.secondary,
-            tension: tension
+            tension: tension,
+            pointRadius: pointRadius,
         },
         canceled_orders: {
             label: lang.config.canceled_orders,
             data: [],
             borderColor: themes.tertiary,
             backgroundColor: themes.tertiary,
-            tension: tension
+            tension: tension,
+            pointRadius: pointRadius,
         },
         feedbacks: {
             label: lang.config.feedbacks,
             data: [],
             borderColor: themes.fourth,
             backgroundColor: themes.fourth,
-            tension: tension
+            tension: tension,
+            pointRadius: pointRadius,
         }
     };
 
@@ -93,4 +98,13 @@ export const clearArrayHide = data => {
     return result;
 };
 
+export const addPercentages = options => {
+    options.plugins.datalabels = {
+        color: themes.white,
+        formatter: (value, context) => {
+            return Math.round(value / context.chart.getDatasetMeta(0).total * 100) + chr(37);
+        }
+    }
 
+    return options;
+};
